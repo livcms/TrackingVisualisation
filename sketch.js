@@ -1,15 +1,36 @@
 let currsec; // global variables
-
+let img; 
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
     currsec = 0; 
+    img = loadImage('images/interactionNetwork.png'); // Load the image
     particle_pos = [30, windowHeight]; 
     particle_pos2 = [windowWidth, windowHeight]; 
     particle_pos3 = [windowWidth-500, windowHeight]; 
     particle_pos4 = [windowWidth-400, windowHeight]; 
     particle_pos5 = [windowWidth, windowHeight]; 
     particle_pos6 = [windowWidth-900, windowHeight-100]; 
+    //print(windowWidth, windowHeight);
+  
+    //text("Click on the button to " +
+      //   "reset the animation", 20, 20);
+  
+    resetBtn = 
+      createButton("Reset Animation");
+    resetBtn.position(250, 40);
+    resetBtn.mousePressed(resetAnimation);
+  
+      pauseBtn = 
+      createButton("Pause");
+    pauseBtn.position(100, 40);
+    pauseBtn.mousePressed(pause);
+  
+        playBtn = 
+      createButton("Play");
+    playBtn.position(150, 40);
+    playBtn.mousePressed(play);
+
 
 
 
@@ -110,15 +131,38 @@ function draw() {
     gnninitial(); 
   }
   
-  if (currsec > 600){
+  if (currsec > 600 & currsec < 650){
     gnncuts(); 
     text("0", windowWidth-450, windowHeight-450); 
     text("1", windowWidth-410, windowHeight-450); 
     text("0", windowWidth-360, windowHeight-450); 
   }
+  
+    if (currsec > 650){
+    //textSize(30);
+    //text("Interaction network", windowWidth-700, windowHeight-360);  
+    textSize(28);
+    fill('#253C47'); 
+    text("The hit positions can relations between hits are used \n as features to create a latent representation of the graph. \n The edge weights are predicted, then a new node embedding is calculated. \n This is analogous to first computing the interaction, and then the effect of a moving object.", windowWidth-800, windowHeight-300);   
+      
+    interactionnetwork(); 
+    
+  }
 }
 
 
+function resetAnimation() {
+  currsec =0; 
+}
+
+
+function pause() {
+  noLoop();
+}
+
+function play() {
+  loop();
+}
 
 
 
