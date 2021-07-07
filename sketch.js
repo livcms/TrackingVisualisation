@@ -93,7 +93,7 @@ function draw() {
 
   }
   
-  if (currsec > 500){ 
+  if (currsec > 500 & currsec < 550){ 
    textSize(30);
    fill('#253C47'); 
    text('CMS reconstructs the tracks with a Kalman filter. \n This sequentially updates a track candidate \n by finding comapible candidate hits ', 10, windowHeight-200); 
@@ -106,6 +106,16 @@ function draw() {
 
   }
   
+  if (currsec > 550 & currsec < 600){
+    gnninitial(); 
+  }
+  
+  if (currsec > 600){
+    gnncuts(); 
+    text("0", windowWidth-450, windowHeight-450); 
+    text("1", windowWidth-410, windowHeight-450); 
+    text("0", windowWidth-360, windowHeight-450); 
+  }
 }
 
 
