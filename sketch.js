@@ -5,38 +5,27 @@ function setup() {
 	createCanvas(windowWidth, windowHeight);
     currsec = 0; 
     img = loadImage('images/interactionNetwork.png'); // Load the image
-    particle_pos = [30, windowHeight]; 
+    particle_pos = [windowWidth, windowHeight]; 
     particle_pos2 = [windowWidth, windowHeight]; 
-    particle_pos3 = [windowWidth-500, windowHeight]; 
-    particle_pos4 = [windowWidth-400, windowHeight]; 
+    particle_pos3 = [0.5*windowWidth, windowHeight]; 
+    particle_pos4 = [0.4*windowWidth, windowHeight]; 
     particle_pos5 = [windowWidth, windowHeight]; 
-    particle_pos6 = [windowWidth-900, windowHeight-100]; 
-    //print(windowWidth, windowHeight);
-  
-    //text("Click on the button to " +
-      //   "reset the animation", 20, 20);
+    particle_pos6 = [0.1*windowWidth, windowHeight]; 
   
     resetBtn = 
       createButton("Reset Animation");
-    resetBtn.position(250, 40);
+    resetBtn.position(0.12*windowWidth, windowHeight*0.05);
     resetBtn.mousePressed(resetAnimation);
   
       pauseBtn = 
       createButton("Pause");
-    pauseBtn.position(100, 40);
+    pauseBtn.position(windowWidth*0.045, windowHeight*0.05);
     pauseBtn.mousePressed(pause);
   
         playBtn = 
       createButton("Play");
-    playBtn.position(150, 40);
+    playBtn.position(0,windowHeight*0.05);
     playBtn.mousePressed(play);
-
-
-
-
-
-
-
 
 
 }
@@ -45,10 +34,10 @@ function draw() {
   
   //setup background every time draw is called 
   background(220);
-  line(windowWidth-100, windowHeight-400, 100, windowHeight-400 );
-  line(windowWidth-100, windowHeight-500, 100, windowHeight-500 );
-  line(windowWidth-100, windowHeight-600, 100, windowHeight-600 );
-  line(windowWidth-100, windowHeight-700, 100, windowHeight-700 );
+  line(windowWidth*0.9, windowHeight*0.5, windowWidth*0.1, windowHeight*0.5 );
+  line(windowWidth*0.9, windowHeight*0.4, windowWidth*0.1, windowHeight*0.4 );
+  line(windowWidth*0.9, windowHeight*0.3, windowWidth*0.1, windowHeight*0.3 );
+  line(windowWidth*0.9, windowHeight*0.2, windowWidth*0.1, windowHeight*0.2);
   currsec+=1; 
 
  //if(currsec < 150){
@@ -64,7 +53,7 @@ function draw() {
   if(currsec > 0 & currsec < 200){
    textSize(30);
    fill('#253C47'); 
-   text('When particles are collided, they collide in bunches. \n We are mainly interested in head on collissions', 10, windowHeight-200);
+   text('When particles are collided, they collide in bunches. \n We are mainly interested in head on collissions', 0.1*windowWidth, windowHeight*0.8);
     
     //curve( windowWidth-100, windowHeight-400, windowWidth-200, windowHeight-500, windowWidth-300, windowHeight-600, windowWidth-400, windowHeight-700 )
   plotfirst(); 
@@ -75,7 +64,7 @@ function draw() {
   if(currsec > 200 & currsec < 300){
    textSize(30);
    fill('#253C47'); 
-   text('Several particles leave hits from any collission', 10, windowHeight-200);
+   text('Several particles leave hits from any collission', 0.1*windowWidth, windowHeight*0.8);
    plotfirst();
    plotsecond();
 }
@@ -88,7 +77,7 @@ function draw() {
   if (currsec > 300 & currsec < 350){ 
    textSize(30);
    fill('#253C47'); 
-   text('We see the hits, and need to reconstruct the tracks', 10, windowHeight-200); 
+   text('We see the hits, and need to reconstruct the tracks', 0.1*windowWidth, windowHeight*0.8); 
   kalmansetup(); 
   }
   
@@ -96,7 +85,7 @@ function draw() {
   if (currsec > 350 & currsec < 400){ 
    textSize(30);
    fill('#253C47'); 
-   text('CMS reconstructs the tracks with a Kalman filter. \n This sequentially updates a track candidate \n by finding comapible candidate hits ', 10, windowHeight-200); 
+   text('CMS reconstructs the tracks with a Kalman filter. \n This sequentially updates a track candidate \n by finding comapible candidate hits ', 0.1*windowWidth, windowHeight*0.8); 
   kalmansetup(); 
   kalmanplot1();
   }
@@ -105,7 +94,7 @@ function draw() {
   if (currsec > 400 &  currsec < 500){ 
    textSize(30);
    fill('#253C47'); 
-   text('CMS reconstructs the tracks with a Kalman filter. \n This sequentially updates a track candidate \n by finding comapible candidate hits ', 10, windowHeight-200); 
+   text('CMS reconstructs the tracks with a Kalman filter. \n This sequentially updates a track candidate \n by finding comapible candidate hits ', 0.1*windowWidth, windowHeight*0.8); 
   kalmansetup(); 
   kalmanplot1();
   kalmanplot2();
@@ -117,7 +106,7 @@ function draw() {
   if (currsec > 500 & currsec < 550){ 
    textSize(30);
    fill('#253C47'); 
-   text('CMS reconstructs the tracks with a Kalman filter. \n This sequentially updates a track candidate \n by finding comapible candidate hits ', 10, windowHeight-200); 
+   text('CMS reconstructs the tracks with a Kalman filter. \n This sequentially updates a track candidate \n by finding comapible candidate hits ', 0.1*windowWidth, windowHeight*0.8); 
   plotfirst(); 
   plotsecond(); 
   plotthird(); 
@@ -133,9 +122,9 @@ function draw() {
   
   if (currsec > 600 & currsec < 650){
     gnncuts(); 
-    text("0", windowWidth-450, windowHeight-450); 
-    text("1", windowWidth-410, windowHeight-450); 
-    text("0", windowWidth-360, windowHeight-450); 
+    text("0", windowWidth*0.5, windowHeight*0.5); 
+    text("1", windowWidth*0.6, windowHeight*0.5); 
+    text("0", windowWidth*0.7, windowHeight*0.5); 
   }
   
     if (currsec > 650){
@@ -143,7 +132,7 @@ function draw() {
     //text("Interaction network", windowWidth-700, windowHeight-360);  
     textSize(28);
     fill('#253C47'); 
-    text("The hit positions can relations between hits are used \n as features to create a latent representation of the graph. \n The edge weights are predicted, then a new node embedding is calculated. \n This is analogous to first computing the interaction, and then the effect of a moving object.", windowWidth-800, windowHeight-300);   
+    text("The hit positions can relations between hits are used \n as features to create a latent representation of the graph. \n The edge weights are predicted, then a new node embedding is calculated. \n This is analogous to first computing the interaction, and then the effect of a moving object.", windowWidth*0.2, windowHeight*0.7);   
       
     interactionnetwork(); 
     
@@ -151,18 +140,6 @@ function draw() {
 }
 
 
-function resetAnimation() {
-  currsec =0; 
-}
-
-
-function pause() {
-  noLoop();
-}
-
-function play() {
-  loop();
-}
 
 
 
