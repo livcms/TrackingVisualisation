@@ -36,6 +36,6 @@ function gnncuts(){
 
 function interactionnetwork(){ 
   img.resize(900, 330);
-  image(img, windowWidth-870, windowHeight-720);
+  image(img, windowWidth*0, windowHeight*0.1);
   
 }

@@ -91,7 +91,7 @@ function draw() {
   if (currsec > 1050 & currsec < 1400){ 
    textSize(30);
    fill('#253C47'); 
-   text('CMS reconstructs the tracks with a Kalman filter. \n This sequentially updates a track candidate \n by finding comapible hits ', 0.1*windowWidth, windowHeight*0.8); 
+   text('CMS reconstructs the tracks with a Kalman filter. \n This sequentially updates a track candidate \n by finding comaptible hits ', 0.1*windowWidth, windowHeight*0.8); 
   kalmansetup(); 
   //kalmanplot1();
   }
@@ -143,7 +143,7 @@ function draw() {
   
   if (currsec > 2500 & currsec < 2700){
        fill('#253C47'); 
-   text('Let\'s consider another algorithm. \n Graph neural nets have shown promise \n with particle tracking', 0.1*windowWidth, windowHeight*0.8); 
+   text('Let\'s consider another algorithm. \n Graph neural nets have shown promise \n with particle tracking.', 0.1*windowWidth, windowHeight*0.8); 
   }
   
     if (currsec > 2700 & currsec < 3100){
@@ -180,8 +180,13 @@ function draw() {
     //text("Interaction network", windowWidth-700, windowHeight-360);  
     textSize(28);
     fill('#253C47'); 
-    text("Thanks for watching! \n To restart the animation. \n Feel free to email l.vage19@imperial.ac.uk \n if you have questions",  0.1*windowWidth, windowHeight*0.8);   
-      
+    text("Thanks for watching! \n To learn more, check out the links below. \n Feel free to email l.vage19@imperial.ac.uk \n if you have questions",  0.1*windowWidth, windowHeight*0.6);   
+    let a = createA('https://arxiv.org/abs/2103.16701', 'Paper on interaction network');
+    a.position(windowWidth*0.1, windowHeight*0.8);
+    let b = createA('https://arxiv.org/abs/1812.08434', 'Graph neural net review paper');
+    b.position(windowWidth*0.1, windowHeight*0.85);
+    let c = createA('https://spiral.imperial.ac.uk/handle/10044/1/66689', 'Phd thesis related to this work');
+    c.position(windowWidth*0.1, windowHeight*0.9);
     interactionnetwork(); 
     
   }
