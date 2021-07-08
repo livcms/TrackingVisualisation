@@ -8,12 +8,14 @@ function setup() {
     particle_pos = [0, windowHeight]; 
     particle_pos2 = [windowWidth, windowHeight]; 
     particle_pos3 = [0.5*windowWidth, windowHeight]; 
-    particle_pos4 = [0.4*windowWidth, windowHeight]; 
+    particle_pos4 = [0.2*windowWidth, windowHeight]; 
     particle_pos5 = [windowWidth, windowHeight]; 
-    particle_pos6 = [0.1*windowWidth, windowHeight]; 
+    particle_pos6 = [0-windowWidth*0.2, windowHeight]; 
+    col_particle_pos = [0, windowHeight - 20];  
+    col_particle_pos1 = [windowWidth, windowHeight -20]; 
   
     resetBtn = 
-      createButton("Reset Animation");
+      createButton("Restart Animation");
     resetBtn.position(0.12*windowWidth, windowHeight*0.05);
     resetBtn.mousePressed(resetAnimation);
   
@@ -40,100 +42,145 @@ function draw() {
   line(windowWidth*0.9, windowHeight*0.2, windowWidth*0.1, windowHeight*0.2);
   currsec+=1; 
 
- //if(currsec < 150){
-   // textSize(30);
-    //text('These are layers of silicon in the inner part of the detector', 10, windowHeight-200);
-  //}
+ if(currsec < 150){
+    textSize(30);
+   fill('#253C47'); 
+    text('These are layers of silicon in the inner \n part of a particle detector', 30, windowHeight*0.8);
+  }
 
-  //if(currsec > 150 & currsec < 300){
-    //textSize(30);
-    //text('A particle leaves energy deposits (hits) in the silicon layers', 10, windowHeight-200);
-  //}
+ if(currsec > 150 & currsec < 350){
+    textSize(30);
+   fill('#253C47'); 
+    text('Protons are collided in the beamline \n and produce other particles', 30, windowHeight*0.8);
+     plotcollision(); 
+     //plotfirst(); 
+
+  }
   
-  if(currsec > 0 & currsec < 200){
+  if(currsec > 350 & currsec < 600){
    textSize(30);
    fill('#253C47'); 
-   text('When particles are collided, they collide in bunches. \n We are mainly interested in head on collissions', 0.1*windowWidth, windowHeight*0.8);
+    text('These particles pass through the silicon detector, \n leaving energy deposits (hits)', 30, windowHeight*0.8);
+     plotfirst(); 
     
-    //curve( windowWidth-100, windowHeight-400, windowWidth-200, windowHeight-500, windowWidth-300, windowHeight-600, windowWidth-400, windowHeight-700 )
-  plotfirst(); 
 
     
   }
   
-  if(currsec > 200 & currsec < 300){
+  if(currsec > 600 & currsec < 850){
    textSize(30);
    fill('#253C47'); 
-   text('Several particles leave hits from any collission', 0.1*windowWidth, windowHeight*0.8);
+   text('Usually, there are many simultaneous \n proton-proton collisions. \n We see several tracks in the detector.', 0.1*windowWidth, windowHeight*0.8);
    plotfirst();
    plotsecond();
 }
-  if (currsec > 250){ 
-  fill('#FFFFFF'); 
-  plotfirst(); 
-  plotsecond(); 
-  }
+  //if (currsec > 750){ 
+  //fill('#FFFFFF'); 
+  //plotfirst(); 
+  //plotsecond(); 
+ // }
   
-  if (currsec > 300 & currsec < 350){ 
+  if (currsec > 850 & currsec < 1050){ 
    textSize(30);
    fill('#253C47'); 
-   text('We see the hits, and need to reconstruct the tracks', 0.1*windowWidth, windowHeight*0.8); 
+   text('To identify the particles and their momenta, \n  we need to reconstruct the tracks using the hits', 0.1*windowWidth, windowHeight*0.8); 
   kalmansetup(); 
   }
   
     
-  if (currsec > 350 & currsec < 400){ 
+  if (currsec > 1050 & currsec < 1400){ 
    textSize(30);
    fill('#253C47'); 
-   text('CMS reconstructs the tracks with a Kalman filter. \n This sequentially updates a track candidate \n by finding comapible candidate hits ', 0.1*windowWidth, windowHeight*0.8); 
+   text('CMS reconstructs the tracks with a Kalman filter. \n This sequentially updates a track candidate \n by finding comapible hits ', 0.1*windowWidth, windowHeight*0.8); 
   kalmansetup(); 
-  kalmanplot1();
+  //kalmanplot1();
   }
   
     
-  if (currsec > 400 &  currsec < 500){ 
+  if (currsec > 1400 &  currsec < 2000){ 
    textSize(30);
    fill('#253C47'); 
-   text('CMS reconstructs the tracks with a Kalman filter. \n This sequentially updates a track candidate \n by finding comapible candidate hits ', 0.1*windowWidth, windowHeight*0.8); 
+   text('The track is extrapolated to the next layer, \n giving a window of compatability. \n The track parameters are then \n updated with a compatible hit. \n This repeats.', 0.1*windowWidth, windowHeight*0.8); 
   kalmansetup(); 
   kalmanplot1();
-  kalmanplot2();
-  kalmanplot3(); 
-  kalmanplot4(); 
-  kalmanplot5();
-
+  if (currsec > 1500 &  currsec < 1600){
+    kalmanplot1();
+    kalmanplot2();
+  }
+  if (currsec > 1600 &  currsec < 1700){
+    kalmanplot1();
+    kalmanplot2();
+    kalmanplot3(); 
+  }
+  if (currsec > 1700 &  currsec < 1800){
+    kalmanplot1();
+    kalmanplot2();
+    kalmanplot3(); 
+    kalmanplot4();
+  }
+  if (currsec > 1800 &  currsec < 2000){
+    kalmanplot1();
+    kalmanplot2();
+    kalmanplot3(); 
+    kalmanplot4(); 
+    kalmanplot5();
+}
+    
   }
   
-  if (currsec > 500 & currsec < 550){ 
+  if (currsec > 2000 & currsec < 2500){ 
    textSize(30);
    fill('#253C47'); 
-   text('CMS reconstructs the tracks with a Kalman filter. \n This sequentially updates a track candidate \n by finding comapible candidate hits ', 0.1*windowWidth, windowHeight*0.8); 
+   text('CMS is upgrading. There will be many more \n simultaneous collisions. \n Considering all the possible ways \n of constructing trakcs with these hits, \n we can see how this scales badly.', 0.1*windowWidth, windowHeight*0.8); 
   plotfirst(); 
   plotsecond(); 
-  plotthird(); 
+ // plotthird(); 
   plotfourth(); 
   plotfifth(); 
   plotsixth();
 
   }
   
-  if (currsec > 550 & currsec < 600){
-    gnninitial(); 
+  if (currsec > 2500 & currsec < 2700){
+       fill('#253C47'); 
+   text('Let\'s consider another algorithm. \n Graph neural nets have shown promise \n with particle tracking', 0.1*windowWidth, windowHeight*0.8); 
   }
   
-  if (currsec > 600 & currsec < 650){
-    gnncuts(); 
-    text("0", windowWidth*0.5, windowHeight*0.5); 
-    text("1", windowWidth*0.6, windowHeight*0.5); 
-    text("0", windowWidth*0.7, windowHeight*0.5); 
+    if (currsec > 2700 & currsec < 3100){
+       fill('#253C47'); 
+   text('We create a graph. \n We can consider the hits as nodes \n and try to predict which nodes \n are connected.', 0.1*windowWidth, windowHeight*0.8); 
+      gnninitial();
+      
   }
   
-    if (currsec > 650){
+  if (currsec > 3100 & currsec < 4000){
+    //gnncuts(); 
+    //fill('#253C47'); 
+    text("0", windowWidth*0.4, windowHeight*0.45); 
+    text("1", windowWidth*0.5, windowHeight*0.45); 
+    text("0", windowWidth*0.6, windowHeight*0.45); 
+    gnninitial();
+    fill('#253C47'); 
+   text('We use supervised machine learning. \n If the nodes are part \n of the same track, \n we label it as 1, otherwise 0.', 0.1*windowWidth, windowHeight*0.8); 
+  }
+  
+    if (currsec > 4000 & currsec < 5000){
     //textSize(30);
     //text("Interaction network", windowWidth-700, windowHeight-360);  
     textSize(28);
     fill('#253C47'); 
-    text("The hit positions can relations between hits are used \n as features to create a latent representation of the graph. \n The edge weights are predicted, then a new node embedding is calculated. \n This is analogous to first computing the interaction, and then the effect of a moving object.", windowWidth*0.2, windowHeight*0.7);   
+    text("One popular method is an interaction network. \n The hit positions and relations between hits are used \n as features to create a latent representation of the graph. \n The edge weights are predicted, then a new node embedding is calculated. \n This is analogous to first computing the interaction, \n and then the effect of a moving object.",  0.1*windowWidth, windowHeight*0.7);   
+      
+    interactionnetwork(); 
+    
+  }
+  
+      if (currsec > 5000){
+    //textSize(30);
+    //text("Interaction network", windowWidth-700, windowHeight-360);  
+    textSize(28);
+    fill('#253C47'); 
+    text("Thanks for watching! \n To restart the animation. \n Feel free to email l.vage19@imperial.ac.uk \n if you have questions",  0.1*windowWidth, windowHeight*0.8);   
       
     interactionnetwork(); 
     
