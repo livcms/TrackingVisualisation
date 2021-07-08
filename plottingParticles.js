@@ -5,27 +5,23 @@ function plotfirst(){
     ellipse(particle_pos[0], particle_pos[1], 40, 40);
     particle_pos = [particle_pos[0] + 10, particle_pos[1] - 10];
     
-    if (particle_pos[1] < windowHeight-400){ 
-      const x = particle_pos[0]; 
+    if (particle_pos[1] < windowHeight*0.5){ 
       fill('#eea9b8');
-      ellipse(windowWidth-450, windowHeight-400, 20, 20); 
+      ellipse(windowWidth*0.45, windowHeight*0.5, 20, 20); 
 }
  
-    if (particle_pos[1] < windowHeight-500){ 
-      const x = particle_pos[0]; 
+    if (particle_pos[1] < windowHeight*0.4){ 
       fill('#eea9b8');
-      ellipse(windowWidth-350, windowHeight-500, 20, 20); 
+      ellipse(windowWidth*0.55, windowHeight*0.4, 20, 20); 
 }
-    if (particle_pos[1] < windowHeight-600){ 
-      const x = particle_pos[0]; 
+    if (particle_pos[1] < windowHeight*0.3){ 
       fill('#eea9b8');
-      ellipse(windowWidth-250, windowHeight-600, 20, 20); 
+      ellipse(windowWidth*0.65, windowHeight*0.3, 20, 20); 
 }
     
-    if (particle_pos[1] < windowHeight-700){ 
-      const x = particle_pos[0]; 
+    if (particle_pos[1] < windowHeight*0.2){ 
       fill('#eea9b8');
-      ellipse(windowWidth-150, windowHeight-700, 20, 20); 
+      ellipse(windowWidth*0.75, windowHeight*0.2, 20, 20); 
 }
 }
 
@@ -37,23 +33,23 @@ function plotsecond(){
     ellipse(particle_pos2[0], particle_pos2[1], 40, 40);
     particle_pos2 = [particle_pos2[0] - 5, particle_pos2[1] - 10];
   
-    if (particle_pos2[1] < windowHeight-400){ 
+    if (particle_pos2[1] < windowHeight*0.5){ 
       fill('#70c2d8');
-      ellipse(windowWidth-200, windowHeight-400, 20, 20); 
+      ellipse(windowWidth*0.8, windowHeight*0.5, 20, 20); 
 }
  
-    if (particle_pos2[1] < windowHeight-500){ 
+    if (particle_pos2[1] < windowHeight*0.4){ 
       fill('#70c2d8');
-      ellipse(windowWidth-250, windowHeight-500, 20, 20); 
+      ellipse(windowWidth*0.75, windowHeight*0.4, 20, 20); 
 }
-    if (particle_pos2[1] < windowHeight-600){ 
+    if (particle_pos2[1] < windowHeight*0.3){ 
       fill('#70c2d8');
-      ellipse(windowWidth-300, windowHeight-600, 20, 20); 
+      ellipse(windowWidth*0.7, windowHeight*0.3, 20, 20); 
 }
     
-    if (particle_pos2[1] < windowHeight-700){ 
+    if (particle_pos2[1] < windowHeight*0.2){ 
       fill('#70c2d8');
-      ellipse(windowWidth-350, windowHeight-700, 20, 20); 
+      ellipse(windowWidth*0.65, windowHeight*0.2, 20, 20); 
 }
 }
 

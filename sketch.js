@@ -5,7 +5,7 @@ function setup() {
 	createCanvas(windowWidth, windowHeight);
     currsec = 0; 
     img = loadImage('images/interactionNetwork.png'); // Load the image
-    particle_pos = [windowWidth, windowHeight]; 
+    particle_pos = [0, windowHeight]; 
     particle_pos2 = [windowWidth, windowHeight]; 
     particle_pos3 = [0.5*windowWidth, windowHeight]; 
     particle_pos4 = [0.4*windowWidth, windowHeight]; 
