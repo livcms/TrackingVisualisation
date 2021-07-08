@@ -3,7 +3,7 @@
 function plotfirst(){
     fill('#eea9b8');
     ellipse(particle_pos[0], particle_pos[1], 40, 40);
-    particle_pos = [particle_pos[0] + 10, particle_pos[1] - 10];
+    particle_pos = [particle_pos[0] + windowWidth*0.009, particle_pos[1] - windowHeight*0.01];
     
     if (particle_pos[1] < windowHeight*0.5){ 
       fill('#eea9b8');
@@ -31,7 +31,7 @@ function plotsecond(){
     
     fill('#70c2d8');
     ellipse(particle_pos2[0], particle_pos2[1], 40, 40);
-    particle_pos2 = [particle_pos2[0] - 5, particle_pos2[1] - 10];
+    particle_pos2 = [particle_pos2[0] - windowWidth*0.004, particle_pos2[1] - windowHeight*0.01];
   
     if (particle_pos2[1] < windowHeight*0.5){ 
       fill('#70c2d8');

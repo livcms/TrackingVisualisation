@@ -100,6 +100,7 @@ function draw() {
   kalmanplot2();
   kalmanplot3(); 
   kalmanplot4(); 
+  kalmanplot5();
 
   }
   
